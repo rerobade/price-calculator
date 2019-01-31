@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/default :: layout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Ingredient</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <form action="#" th:action="@{/ingredients/create}" th:object="${ingredient}" method="post">
+            <fieldset>
+                <legend>New Ingredient</legend>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{name}" id="name" placeholder="Name">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback"></span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" th:errorclass="is-invalid" th:field="*{price}" id="price" placeholder="0.00" step="0.01" min="0">
+                        <!--input type="text" th:field="*{price}" id="price" placeholder="Price"-->
+                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="currency">Currency</label>
+                        <!--input type="text" th:field="*{currency}" id="currency" placeholder="Currency"-->
+                        <select th:field="*{currency}" class="form-control" th:errorclass="is-invalid" id="currency" placeholder="Currency">
+                            <option th:value="EUR" th:text="EUR">Currency</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}" class="invalid-feedback"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="volume">Volume</label>
+                        <input type="number" class="form-control" th:errorclass="is-invalid" th:field="*{volume}" id="volume" placeholder="1" step="1" min="0">
+                        <!--input type="text" th:field="*{volume}" id="volume" placeholder="Volume"-->
+                        <span th:if="${#fields.hasErrors('volume')}" th:errors="*{volume}" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="unit">Unit</label>
+                        <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{unit}" id="unit" placeholder="Unit">
+                        <div th:if="${#fields.hasErrors('unit')}" th:errors="*{unit}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Create Ingredient
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
+</body>
+</html>

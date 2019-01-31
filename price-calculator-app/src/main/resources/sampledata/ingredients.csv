@@ -1,0 +1,4 @@
+id,name,price.amount,price.currency,volume.amount,volume.unit
+1,Perlen weiß,12.5,EUR,12,stk
+2,Perlen rot,12.5,EUR,12,stk
+3,Gummiband,12.5,EUR,12,m

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default"-->
+<html th:replace="~{layouts/default :: layout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ingredients List</title>
+</head>
+<body>
+<section>
+    <div class="container" th:switch="${ingredients}">
+        <h2 th:case="null">No ingredients yet!</h2>
+        <div th:case="*">
+            <h2>Ingredients</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Currency</th>
+                        <th>Volume</th>
+                        <th>Unit</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ingredient, rowStat : ${ingredients}">
+                        <td th:text="${ingredient.name}"></td>
+                        <td th:text="${ingredient.price}"></td>
+                        <td th:text="${ingredient.currency}"></td>
+                        <td th:text="${ingredient.volume}"></td>
+                        <td th:text="${ingredient.unit}"></td>
+                        <td>
+                            <a th:href="@{/ingredients/edit/{id}(id=${ingredient.id})}">
+                                <i class="fas fa-edit" style="color:green;"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}">
+                                <i class="fas fa-trash-alt" style="color:red;"></i>
+                            </a>
+                        </td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>
+            <a class="btn btn-primary" href="/ingredients/create">
+                <i class="fas fa-plus"></i> Add a new ingredient</a>
+        </p>
+    </div>
+</section>
+</body>
+</html>
