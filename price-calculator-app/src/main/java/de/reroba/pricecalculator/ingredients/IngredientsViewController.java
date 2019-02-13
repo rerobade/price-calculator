@@ -23,19 +23,19 @@ public class IngredientsViewController {
     @GetMapping(consumes = MediaType.ALL_VALUE)
     public String showAllIngredients(Model model) {
         model.addAttribute("ingredients", ingredientsApiController.getIngredients(null));
-        return "ingredients";
+        return "ingredients/index";
     }
 
     @GetMapping("/create")
     public String showAddForm(IngredientDto ingredient, Model model) {
         model.addAttribute("ingredient", ingredient);
-        return "ingredient-create";
+        return "ingredients/create";
     }
 
     @PostMapping("/create")
     public String createIngredient(@Valid @ModelAttribute("ingredient") IngredientDto ingredient, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "ingredient-create";
+            return "ingredients/create";
         }
 
         ingredientsApiController.createIngredient(ingredient);
@@ -49,7 +49,7 @@ public class IngredientsViewController {
                 //.orElseThrow(() -> new IllegalArgumentException("Invalid ingredient Id:" + id));
 
         model.addAttribute("ingredient", ingredient);
-        return "ingredient-update";
+        return "ingredients/update";
     }
 
     @PostMapping("/update/{id}")
@@ -57,7 +57,7 @@ public class IngredientsViewController {
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             ingredient.setId(id);
-            return "ingredient-update";
+            return "ingredients/update";
         }
 
         ingredientsApiController.updateIngredient(id, ingredient);

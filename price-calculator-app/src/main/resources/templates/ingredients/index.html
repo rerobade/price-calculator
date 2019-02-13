@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<!--html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layouts/default"-->
-<html th:replace="~{layouts/default :: layout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/default :: layout(~{::title}, ~{::section})}" >
 <head>
     <title>Ingredients List</title>
 </head>

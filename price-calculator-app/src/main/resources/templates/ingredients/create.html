@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html th:replace="~{layouts/default :: layout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/default :: layout(~{::title}, ~{::section})}">
 <head>
-    <title>Update Ingredient</title>
+    <title>Create Ingredient</title>
 </head>
 <body>
 <section>
     <div class="container">
-        <form action="#" th:action="@{/ingredients/update/{id}(id=${ingredient.id})}" th:object="${ingredient}" method="post">
+        <form action="#" th:action="@{/ingredients/create}" th:object="${ingredient}" method="post">
             <fieldset>
-                <legend>Update Ingredient</legend>
+                <legend>New Ingredient</legend>
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" th:errorclass="is-invalid" th:field="*{name}" id="name" placeholder="Name">
@@ -45,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Update Ingredient
+                        <i class="fas fa-save"></i> Create Ingredient
                     </button>
                 </div>
             </fieldset>
